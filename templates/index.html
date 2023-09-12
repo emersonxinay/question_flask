@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questionario</title>
+    <!-- link de bootstrap  -->
+    <!-- link de css -->
+    <!-- link de iconos  -->
+    <!-- link de favicon -->
+    <!-- link de tipos de letras  -->
+  </head>
+
+  <body>
+    <h1>hola</h1>
+    {% for question in questions %}
+    <li>{{ question.text }}</li>
+    <ul>
+      {% for option in question.options %}
+      <li>{{ option.text }}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crear Pregunta</title>
+</head>
+
+<body>
+    <h1>Crear una nueva pregunta</h1>
+    <form method="POST" action="/formulario">
+        <label for="question_text">Texto de la pregunta:</label>
+        <input type="text" id="question_text" name="question_text" required /><br />
+
+        <h2>Opciones</h2>
+        <div id="options">
+            <div class="option">
+                <label for="option1">Opción 1:</label>
+                <input type="text" id="option1" name="option1" required /><br />
+            </div>
+            <div class="option">
+                <label for="option2">Opción 2:</label>
+                <input type="text" id="option2" name="option2" required /><br />
+            </div>
+        </div>
+
+        <button type="button" id="add_option">Agregar Opción</button><br /><br />
+        <input type="submit" value="Crear Pregunta" />
+    </form>
+
+    <script>
+        // JavaScript para agregar opciones dinámicamente
+        let optionCount = 2;
+
+        document.getElementById("add_option").addEventListener("click", function () {
+            optionCount++;
+            const optionsDiv = document.getElementById("options");
+            const newOption = document.createElement("div");
+            newOption.classList.add("option");
+            newOption.innerHTML = `
+              <label for="option${optionCount}">Opción ${optionCount}:</label>
+              <input type="text" id="option${optionCount}" name="option${optionCount}" required><br>
+          `;
+            optionsDiv.appendChild(newOption);
+        });
+    </script>
+</body>
+
+</html>
