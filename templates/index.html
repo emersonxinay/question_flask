@@ -13,13 +13,22 @@
 
   <body>
     <h1>hola</h1>
-    {% for question in questions %}
-    <li>{{ question.text }}</li>
-    <ul>
-      {% for option in question.options %}
-      <li>{{ option.text }}</li>
+    <form method="POST" action="/calificar">
+      {% for question in questions %}
+      <h2>Pregunta: {{ question.text }}</h2>
+      <div class="options">
+        {% for option in question.options %}
+        <input
+          type="radio"
+          id="option{{ option.id }}"
+          name="question{{ question.id }}"
+          value="{{ option.id }}"
+        />
+        <label for="option{{ option.id }}">{{ option.text }}</label><br />
+        {% endfor %}
+      </div>
       {% endfor %}
-    </ul>
-    {% endfor %}
+      <input type="submit" value="Enviar respuestas" />
+    </form>
   </body>
 </html>
